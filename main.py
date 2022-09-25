@@ -1,4 +1,5 @@
 from datetime import date, datetime
+from dateutil.relativedelta import relativedelta
 import math
 from wechatpy import WeChatClient
 from wechatpy.client.api import WeChatMessage, WeChatTemplate
@@ -17,7 +18,8 @@ app_secret = os.environ["APP_SECRET"]
 
 user_id = os.environ["USER_ID"]
 template_id = os.environ["TEMPLATE_ID"]
-nowDate = datetime.strftime(today,'%Y年%m月%d %H:%M:%S')
+today1 = datetime.now() - relativedelta(hours=8)
+nowDate = datetime.strftime(today1,'%Y年%m月%d %H:%M:%S')
 
 def get_weather():
   url = "http://autodev.openspeech.cn/csp/api/v2.1/weather?openId=aiuicus&clientType=android&sign=android&city=" + city
